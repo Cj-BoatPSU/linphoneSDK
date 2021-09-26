@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.linphone.incomingcall">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.IncomingCall">
+
+        <activity
+            android:name=".IncomingCallActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- The following isn't mandatory but having a foreground service prevents Android to kill the app during a call -->
+        <!-- You can create your own service that inherits from this class for simplicity or handle the foreground service yourself -->
+        <service android:name="org.linphone.core.tools.service.CoreService"
+            android:foregroundServiceType="phoneCall|camera|microphone"
+            android:exported="false"
+            android:stopWithTask="false" />
+
+    </application>
+
+</manifest>
